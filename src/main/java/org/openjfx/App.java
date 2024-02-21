@@ -31,25 +31,37 @@ public class App extends Application {
 
 
         int n = 0;
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\meow1\\Documents\\CodingProjects\\CSA\\PLTW\\3.7.7\\Copy of Cereal.csv"));  
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\meow1\\OneDrive\\Desktop\\hell\\hell2\\sample\\titles.csv"));  
         String line = "";  
         br.readLine();
         n++;
+
+        /*String id,
+         String title,
+         String description,
+         int releaseYear, 
+         String ageRating,
+         int runtime, 
+         ArrayList<String> genres, 
+         double imdbScore, 
+         double tmdbScore */
         try{
             while ((line = br.readLine()) != null)   //returns a Boolean value  
             {
-                String[] ceral = line.split(",");
+                String[] ceral = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                 movies.add(new Movie(
                     ceral[0],
                     ceral[1],
-                    ceral[2],
-                    Integer.parseInt(ceral[3]),
-                    ceral[4],
-                    Integer.parseInt(ceral[5]),
-                    new ArrayList<String>(Arrays.asList(ceral[6].replace("[","").replace("]","").split(","))),
-                    Double.parseDouble(ceral[6]),
-                    Double.parseDouble(ceral[7])
+                    ceral[3],
+                    Integer.parseInt(ceral[4]),
+                    ceral[5],
+                    Integer.parseInt(ceral[6]),
+                    new ArrayList<String>(Arrays.asList(ceral[7].replace("[","").replace("]","").split(","))),
+                    Double.parseDouble(ceral[11]),
+                    Double.parseDouble(ceral[14])
                     ));
+               movies.get(n-1).print();
+               System.out.println(n);
                 n++;
             }
         }
@@ -170,7 +182,7 @@ class Movie {
     }
  
     public void print() {
-       System.out.println("ID: " + this.id + " Title: " + this.title + " Description: " + this.description + " Release Year: " + this.releaseYear + " Age Rating: " + this.ageRating + " Runtime: " + this.runtime + " Genres: " + this.genres);
+       System.out.println("ID: " + this.id + " Title: " + this.title + " Description: " + this.description + " Release Year: " + this.releaseYear + " Age Rating: " + this.ageRating + " Runtime: " + this.runtime + " Genres: " + this.genres + "rating: " + this.imdbScore);
     }
  
     public static void main(String[] args) {
