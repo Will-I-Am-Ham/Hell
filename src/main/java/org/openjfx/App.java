@@ -49,6 +49,7 @@ public class App extends Application {
             while ((line = br.readLine()) != null)   //returns a Boolean value  
             {
                 String[] ceral = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                try{
                 movies.add(new Movie(
                     ceral[0],
                     ceral[1],
@@ -63,6 +64,10 @@ public class App extends Application {
                movies.get(n-1).print();
                System.out.println(n);
                 n++;
+                }
+                catch(Exception e){
+                  System.out.println("Error:" + n);
+                }
             }
         }
         catch (IOException e){
