@@ -24,11 +24,13 @@ import java.util.ArrayList;
  */
 public class App extends Application {
     
+   ArrayList<Movie> movies = new ArrayList<Movie>();
+   int csvlength = 6000;
+
     @Override
     public void start(Stage stage) throws Exception { 
 
-        ArrayList<Movie> movies = new ArrayList<Movie>();
-
+      int numerrs = 0; 
 
         int n = 0;
         BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\meow1\\OneDrive\\Desktop\\hell\\hell2\\sample\\titles.csv"));  
@@ -61,12 +63,13 @@ public class App extends Application {
                     Double.parseDouble(ceral[11]),
                     Double.parseDouble(ceral[14])
                     ));
-               movies.get(n-1).print();
-               System.out.println(n);
+               //movies.get(n-1).print();
+               //System.out.println(n);
                 n++;
                 }
-                catch(Exception e){
-                  System.out.println("Error:" + n);
+                catch(Exception e){ //I think most of the errors that it thorws out is due to the split funcion spltiing commas within the coloumns :( shouldent matter though only 3 in 100 lines seem to have an error
+                  System.out.println("Error: at line " + n + " in CSV somthing wrong with csv or csv reader!");
+                  numerrs++;
                 }
             }
         }
@@ -76,6 +79,7 @@ public class App extends Application {
 
         movies.get(0).print();
 
+      System.out.println("percent errors: " + (double)csvlength/numerrs);
 
         
         //Defining the x axis               
@@ -121,7 +125,6 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
 
 
