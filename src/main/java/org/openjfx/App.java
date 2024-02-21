@@ -79,7 +79,7 @@ public class App extends Application {
 
         movies.get(0).print();
 
-      System.out.println("percent errors: " + (double)csvlength/numerrs);
+      System.out.println("percent errors / not included: " + (double)numerrs/(double)csvlength * 100 + "%");
 
         
         //Defining the x axis               
